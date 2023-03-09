@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <img id = "image" src="" alt="">
+  </div>
+  <script>
+    let image = document.getElementById("image");
+    // image.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png";
+    const root = document.getElementById('root');
+    const xhr = new XMLHttpRequest();
+    const xhr2 = new XMLHttpRequest();
+    // let number = 622;
+    // const _URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png';
+    const _URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/145.png';
+
+    const _URL2 = 'https://pokeapi.co/api/v2/pokemon-species/145/';
+    // const _URL2 = 'https://pokeapi.co/api/v2/pokemon-species/143/';
+    xhr.open('GET', _URL ,true);
+    xhr.responseType = 'blob';
+    xhr.send();
+    xhr2.open('GET', _URL2);
+    xhr2.send();
+    // addEventListener라는 것도 자체가 함수다.
+    //  함수이기 때문에, 'load'라는 매개변수가 존재한다.
+    // 'load'는 addEventListener와 짝궁으로 맞는 매개변수이다.
+    //  매개변수의 짝꿍이기 때문에, 임의의 값을 지정할수없다.
+
+    xhr.addEventListener('load', function rand () {
+
+      //이미지 html에 띄우기
+
+      console.log(xhr.response);
+      const _PokeData = xhr.response;
+      //let blob = new Blob([_PokeData], {type: xhr.getResponseHeader("content-type")});
+      image.src = URL.createObjectURL(_PokeData);
+      //포켓몬 이름 html에 띄우기
+      //console.log(xhr2.response);
+      const _PokeData2 = JSON.parse(xhr2.response);
+      const h1 = document.createElement('h1');
+      h1.textContent = _PokeData2.names[2].name;
+      //console.log(_PokeData2.names[2]);
+      root.appendChild(h1);
+    });
+  </script>
+</body>
+</html>
