@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<div id="root">
+
+<div></div>
+
+
+
+</div>
+
+
+<script>
+function divStyle(collec,w,h,b){
+  collec.style.width=w;
+  collec.style.height=h;
+  collec.style.border=b;
+
+}
+
+let root=document.getElementById("root");
+divStyle(root,"500px","1000px","6px solid black");
+root.style.position="relative";
+
+
+// 따로 뺴서 만든 이유 -->
+//  추후의 유지보수를 용이하게 하기 위해서 이다.
+// 유지보수를 위해서, 따로 자식을 설정하는 곳을 만들어서,
+//  즉각적으로 유지보수를 쉽게 할수 있게 만든다.
+
+
+
+let circle= document.createElement("div");
+let MBTIone=document.createElement("div");
+let MBTItwo=document.createElement("div");
+let MBTIthree=document.createElement("div");
+let MBTIfour=document.createElement("div");
+  root.appendChild(circle);
+circle.appendChild(MBTIone);
+circle.appendChild(MBTItwo);
+circle.appendChild(MBTIthree);
+circle.appendChild(MBTIfour);
+
+
+
+
+
+//  원 영역
+
+divStyle(root.children[0],"150px","150px","10px solid blue")
+root.children[0].style.background="blue";
+root.children[0].style.borderRadius="50%";
+root.children[0].style.position="absolute";
+root.children[0].style.bottom="40%";
+root.children[0].style.left="30%";
+
+// 첫번째 MBTI 박스
+// root.children. 으로 하면 안된다.
+// 왜 안되는가? --> 
+// let test=root.children[0]
+// let MBTIone=document.createElement("div");
+// circle.appendChild(MBTIone);
+
+divStyle(circle.children[0],"100px","100px","10px solid black",);
+console.log(root.children[0].children[0]);
+circle.children[0].style.background="pink";
+circle.children[0].style.opacity="40%";
+circle.children[0].style.position="absolute";
+circle.children[0].style.bottom="20%";
+circle.children[0].style.left="60%";
+circle.children[0].innerHTML="ISTJ";
+
+
+
+// 두번째 MBTI 박스
+divStyle(circle.children[1],"100px","100px","10px solid black");
+circle.children[1].style.background="pink";
+circle.children[1].style.opacity="40%";
+circle.children[1].style.position="absolute";
+circle.children[1].style.bottom="60%";
+circle.children[1].style.left="60%";
+circle.children[1].innerHTML="ISTP";
+
+
+//  세번쨰 MBTI 박스
+
+divStyle(circle.children[2],"100px","100px","10px solid black");
+circle.children[2].style.background="pink";
+circle.children[2].style.opacity="40%";
+circle.children[2].style.position="absolute";
+circle.children[2].style.bottom="60%";
+circle.children[2].style.right="60%";
+circle.children[2].innerHTML="ISFJ";
+
+
+// 네번째 MBTI 박스
+
+divStyle(circle.children[3],"100px","100px","10px solid black");
+circle.children[3].style.background="pink";
+circle.children[3].style.opacity="40%";
+circle.children[3].style.position="absolute";
+circle.children[3].style.bottom="20%";
+circle.children[3].style.left="20%";
+circle.children[3].innerHTML="INTP";
+
+
+document.getElementById("root")
+    .addEventListener("click", function(event) {
+   circle.children[0].style.display="none";
+   circle.children[1].style.display="none";
+   circle.children[2].style.display="none";
+   circle.children[3].style.display="none";
+
+   let colorlist=["#FC5C7D","#6A82FB","#38ef7d","#fffbd5","#b20a2c","#CAC531","blue","wihte","pink","black","aquamarine","gray","#Fc5C7D","#6A82FB","38ef7d","#fffbd5","#b20a2c","red"];
+
+   for(let i=0;i<=colorlist.length; i++){
+
+    setTimeout(function(){
+      root.children[0].style.backgroundColor=colorlist[i];
+
+
+
+    }, 10*i);
+
+
+   }
+        
+    });
+
+
+
+
+//  요것은 무언인가
+        // event.preventDefault();
+
+
+</script>
+
+</body>
+</html>
