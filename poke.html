@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const root = document.getElementById('root');
+    const makeDiv = document.createElement('div');
+    const makeDiv2 = document.createElement('div');
+    const makeDiv3 = document.createElement('div');
+
+// makediv 하면 DIV가 생긴다.
+// 자식의 생성자인 appendChild 가 맨 마지막에 와야한다.
+    // const jong = document.createElement('div');
+    root.appendChild(makeDiv);
+    root.appendChild(makeDiv2);
+    root.appendChild(makeDiv3);
+    
+    // makeDiv.appendChild(jong);
+  </script>
+</body>
+</html>
